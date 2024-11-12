@@ -1,0 +1,224 @@
+---
+const { title, image, content } = Astro.props;
+
+const pathname = Astro.url.pathname || '';
+const lastSegment = pathname.split('/').pop() || '';
+const currentArticleNumber = parseInt(lastSegment.replace('article', ''), 10);
+const previousArticleNumber = currentArticleNumber > 1 ? currentArticleNumber - 1 : null;
+const nextArticleNumber = currentArticleNumber + 1;
+
+---
+
+<meta charset="UTF-8">
+<div class="container">
+  <article>
+    <div class="content">
+      <div class="text">
+        <h1>{title}</h1>
+        <section id="contentText">
+          <slot /> <!-- Используем слот для вставки HTML-контента -->
+        </section>
+      </div>
+      <div class="image" onclick={`openPopup('${image}')`}>
+        <img src={image} alt={title} />
+      </div>
+    </div>
+  </article>
+</div>
+
+<div class="navigation-buttons">
+  {previousArticleNumber && (
+    <a href={`/articles/article${previousArticleNumber}`} class="nav-button">Предыдущая статья</a>
+  )}
+  <a href="/" class="nav-button">На главную</a>
+  <a href={`/articles/article${nextArticleNumber}`} class="nav-button">Следующая статья</a>
+</div>
+
+<div id="popup" class="popup">
+  <span class="close" onclick="closePopup()">&times;</span>
+  <img class="popup-content" id="popup-img" />
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+  const openPopup = (imageSrc: string) => {      const popup = document.getElementById('popup');
+    const popupImg = document.getElementById('popup-img') as HTMLImageElement;      if (popupImg) {
+      popupImg.src = imageSrc;      }
+    if (popup) {        popup.style.display = 'block';
+    }    };
+
+  const closePopup = () => {      const popup = document.getElementById('popup');
+    if (popup) {        popup.style.display = 'none';
+    }    };
+  (window as any).openPopup = openPopup;
+  (window as any).closePopup = closePopup;  });
+
+
+</script>
+
+<style>
+  @font-face {
+    font-family: 'Futurespore Cyrillic';
+    src: url('../../../public/fonts/Futurespore-Cyrillic.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'Menorah Grotesk';
+    src: url('../../../public/fonts/MenorahGrotesk-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'Menorah Grotesk';
+    src: url('../../../public/fonts/MenorahGrotesk-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'Menorah Grotesk';
+    src: url('../../../public/fonts/MenorahGrotesk-Semi.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'Menorah Grotesk';
+    src: url('../../../public/fonts/MenorahGrotesk-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+  }
+
+  body {
+    background: url('../../../public/img/back-img.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: #FFFFFF; /* Default text color */
+    font-family: 'Menorah Grotesk', sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+
+  .container {
+    margin: 2rem auto;
+    padding: 2rem;
+    max-width: 800px;
+    border: 1px solid #D4F08F; /* Border color */
+    border-radius: 8px;
+    box-shadow: 0 0 10px 2px #D4F08F, 10px 0 10px 2px #D4F08F, 0 10px 10px 2px #D4F08F; /* Neon shadow, no left shadow */
+    background-color: rgba(26, 26, 26, 0.8); /* Slightly lighter background for contrast, with transparency */
+  }
+
+  .navigation-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin: 2rem auto;
+  }
+
+  .nav-button {
+    display: inline-block;
+    padding: 1rem 2rem;
+    font-family: 'Menorah Grotesk', sans-serif;
+    font-size: 1.2rem;
+    color: #1a1a1a;
+    text-decoration: none;
+    background-color: #D4F08F;
+    border: none;
+    border-radius: 8px;
+    transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+    text-align: center;
+  }
+
+  .nav-button:hover {
+    background-color: #b3d477;
+    color: #1a1a1a;
+    transform: scale(1.1);
+  }
+
+  article {
+    margin: 2rem 0;
+    padding: 1rem;
+    border-radius: 8px;
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .text {
+    flex: 1;
+    font-family: 'Menorah Grotesk', sans-serif;
+  }
+
+  .image {
+    flex: 0 0 300px; /* You can adjust the width as needed */
+    margin-left: 1rem;
+    cursor: pointer;
+  }
+
+  .image img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+
+  h1 {
+    margin-top: 1rem;
+    font-size: 2rem;
+    font-family: 'Futurespore Cyrillic', sans-serif;
+    color: #D4F08F; /* Title color */
+  }
+
+  section {
+    margin-top: 1.5rem;
+    line-height: 1.6;
+  }
+
+  @media (min-width: 768px) {
+    .content {
+      flex-direction: row;
+    }
+  }
+
+  .popup {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+
+  .popup-content {
+    margin: 15% auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+  }
+
+  .close {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: #fff;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+    cursor: pointer;
+  }
+
+  .close:hover,
+  .close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+</style>

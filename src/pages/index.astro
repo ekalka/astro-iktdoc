@@ -1,0 +1,195 @@
+---
+const articles = [
+  { title: "Форм-фактор: определение и примеры", link: "/articles/article1" },
+  { title: "Корпуса. Выбор корпуса и вентиляторов корпусов", link: "/articles/article2" },
+  { title: "БП. Форм-факторы и разъёмы. Выбор блока питания и корпуса", link: "/articles/article3" },
+  { title: "Материнская плата. Форм-факторы и компоненты. Характеристики выбора материнской платы", link: "/articles/article4" },
+  { title: "ЦП, сокет. Повышение производительности. Системы охлаждения. Выбор этих компонентов", link: "/articles/article5" },
+  { title: "Типы памяти. ПЗУ", link: "/articles/article6" },
+  { title: "ОЗУ. Модули памяти. Кэш", link: "/articles/article7" },
+  { title: "Платы адаптеров и слоты расширения (PCI, mini PCI, PCIx, PCIe, и др.)", link: "/articles/article8" },
+  { title: "Выбор видеокарты. Выбор плат адаптеров", link: "/articles/article9" },
+  { title: "Устройства хранения данных. Интерфейсы накопителей. Выбор и преимущества HDD и SSD.", link: "/articles/article10" },
+  { title: "Интерфейсы накопителей. Скорости. Подключение внешних устройств хранения данных, характеристики кабеля USB.", link: "/articles/article11" },
+  { title: "Что такое RAID и какие виды вы знаете?", link: "/articles/article12" },
+  { title: "Видеопорты и кабели", link: "/articles/article13" },
+  { title: "Другие порты и кабели. Компоненты перехода. ", link: "/articles/article14" },
+  { title: "Традиционные устройства ввода и KVM", link: "/articles/article15" },
+  { title: "Устройства вывода. ", link: "/articles/article16" },
+  { title: "Мониторы. Характеристики и выбор.", link: "/articles/article17" },
+  { title: "Толстые и тонкие клиенты", link: "/articles/article18" },
+  { title: "Особенности специализированных компьютерных систем", link: "/articles/article19" },
+];
+---
+
+<meta charset="UTF-8">
+<div class="container">
+  <h1 class="page-title">Сети и ИКТ</h1>
+
+  <div class="chapter">
+    <h2 class="chapter-title">Система персонального компьютера</h2>
+    <ul>
+      <li>
+        <a href={articles[0].link}>{articles[0].title}</a>
+      </li>
+      <li>
+        <a href={articles[1].link}>{articles[1].title}</a>
+      </li>
+      <li>
+        <a href={articles[2].link}>{articles[2].title}</a>
+      </li>
+      <li>
+        <a href={articles[3].link}>{articles[3].title}</a>
+      </li>
+      <li>
+        <a href={articles[4].link}>{articles[4].title}</a>
+      </li>
+      <li>
+        <a href={articles[5].link}>{articles[5].title}</a>
+      </li>
+      <li>
+        <a href={articles[6].link}>{articles[6].title}</a>
+      </li>
+      <li>
+        <a href={articles[7].link}>{articles[7].title}</a>
+      </li>
+      <li>
+        <a href={articles[8].link}>{articles[8].title}</a>
+      </li>
+      <li>
+        <a href={articles[9].link}>{articles[9].title}</a>
+      </li>
+      <li>
+        <a href={articles[10].link}>{articles[10].title}</a>
+      </li>
+      <li>
+        <a href={articles[11].link}>{articles[11].title}</a>
+      </li>
+      <li>
+        <a href={articles[12].link}>{articles[12].title}</a>
+      </li>
+      <li>
+        <a href={articles[13].link}>{articles[13].title}</a>
+      </li>
+      <li>
+        <a href={articles[14].link}>{articles[14].title}</a>
+      </li>
+      <li>
+        <a href={articles[15].link}>{articles[15].title}</a>
+      </li>
+      <li>
+        <a href={articles[16].link}>{articles[16].title}</a>
+      </li>
+      <li>
+        <a href={articles[17].link}>{articles[17].title}</a>
+      </li>
+      <li>
+        <a href={articles[18].link}>{articles[18].title}</a>
+      </li>
+    </ul>
+  </div>
+
+  <div class="chapter">
+    <h2 class="chapter-title">Глава 2</h2>
+    <ul>
+
+    </ul>
+  </div>
+</div>
+
+<style>
+  @font-face {
+    font-family: 'Futurespore Cyrillic';
+    src: url('../../../public/fonts/Futurespore-Cyrillic.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'Menorah Grotesk';
+    src: url('../../../public/fonts/MenorahGrotesk-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'Menorah Grotesk';
+    src: url('../../../public/fonts/MenorahGrotesk-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'Menorah Grotesk';
+    src: url('../../../public/fonts/MenorahGrotesk-Semi.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'Menorah Grotesk';
+    src: url('../../../public/fonts/MenorahGrotesk-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+  }
+
+  body {
+    background: url('../../../public/img/back-img.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: #FFFFFF; /* Default text color */
+    font-family: 'Menorah Grotesk', sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+
+  .container {
+    margin: 2rem auto;
+    padding: 2rem;
+    max-width: 800px;
+    border: 1px solid #D4F08F; /* Border color */
+    border-radius: 8px;
+    box-shadow: 0 0 10px 2px #D4F08F, 10px 0 10px 2px #D4F08F, 0 10px 10px 2px #D4F08F; /* Neon shadow, no left shadow */
+    background-color: rgba(26, 26, 26, 0.8); /* Slightly lighter background for contrast, with transparency */
+  }
+
+  .page-title {
+    font-family: 'Futurespore Cyrillic', sans-serif;
+    color: #E0FFA3; /* Slightly brighter color than the title */
+    font-size: 2.5rem;
+    text-align: center;
+    margin-top: 0;
+  }
+
+  .chapter {
+    margin-top: 2rem;
+  }
+
+  .chapter-title {
+    font-family: 'Futurespore Cyrillic', sans-serif;
+    color: #D4F08F; /* Title color */
+    font-size: 2rem;
+    margin-top: 1.5rem;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin-left: 1rem;
+  }
+
+  li {
+    margin: 1rem 0;
+  }
+
+  a {
+    text-decoration: none;
+    color: #D4F08F; /* Title color */
+    font-size: 1.2rem;
+    font-family: 'Menorah Grotesk', sans-serif;
+  }
+
+  a:hover {
+    color: green;
+    transition: all 1s ease-out;
+  }
+</style>
